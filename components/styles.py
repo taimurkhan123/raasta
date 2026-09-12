@@ -11,118 +11,99 @@ def inject_custom_css():
     }
 
     .stApp {
-        background: linear-gradient(180deg, #F0FDF4 0%, #F8FAFC 400px, #F8FAFC 100%);
+        background: #F8FAFC;
     }
 
-    /* ---------- Sidebar ---------- */
+    /* ============ SIDEBAR — light with green accents ============ */
     section[data-testid="stSidebar"] {
-        background: linear-gradient(180deg, #064E3B 0%, #065F46 100%);
-        border-right: none;
-    }
-    section[data-testid="stSidebar"] * {
-        color: #ECFDF5 !important;
+        background: #FFFFFF;
+        border-right: 1px solid #E2E8F0;
     }
     section[data-testid="stSidebar"] h1,
     section[data-testid="stSidebar"] h2,
     section[data-testid="stSidebar"] h3 {
-        color: #FFFFFF !important;
+        color: #064E3B !important;
         font-weight: 700;
         letter-spacing: -0.3px;
     }
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] label,
+    section[data-testid="stSidebar"] span {
+        color: #334155;
+    }
     section[data-testid="stSidebar"] hr {
-        border-color: rgba(255,255,255,0.15);
+        border-color: #E2E8F0;
+        margin: 1rem 0;
     }
 
-    /* =========================================================
-       LANGUAGE DROPDOWN — force everything white box + dark green
-       ========================================================= */
-    section[data-testid="stSidebar"] [data-testid="stSelectbox"],
-    section[data-testid="stSidebar"] [data-testid="stSelectbox"] *,
-    section[data-testid="stSidebar"] [data-baseweb="select"],
-    section[data-testid="stSidebar"] [data-baseweb="select"] *,
-    section[data-testid="stSidebar"] [data-baseweb="select"] input,
-    section[data-testid="stSidebar"] [data-baseweb="select"] div,
-    section[data-testid="stSidebar"] [data-baseweb="select"] span {
-        background-color: #FFFFFF !important;
-        color: #064E3B !important;
-        -webkit-text-fill-color: #064E3B !important;
-        opacity: 1 !important;
-    }
-    section[data-testid="stSidebar"] [data-baseweb="select"] > div {
-        border: 1.5px solid #A7F3D0 !important;
-        border-radius: 10px !important;
-        box-shadow: none !important;
-    }
-    section[data-testid="stSidebar"] [data-baseweb="select"] svg {
-        fill: #064E3B !important;
-        color: #064E3B !important;
-        background-color: transparent !important;
-    }
-    /* Placeholder text — slightly lighter so it looks like a hint */
-    section[data-testid="stSidebar"] [data-baseweb="select"] input::placeholder {
-        color: #94A3B8 !important;
-        -webkit-text-fill-color: #94A3B8 !important;
-        opacity: 1 !important;
-    }
-
-    /* Dropdown popup */
-    div[data-baseweb="popover"],
-    div[data-baseweb="popover"] *,
-    div[data-baseweb="popover"] ul,
-    div[data-baseweb="popover"] ul *,
-    div[data-baseweb="menu"],
-    div[data-baseweb="menu"] * {
-        background-color: #FFFFFF !important;
-        color: #1E293B !important;
-        -webkit-text-fill-color: #1E293B !important;
-    }
-    div[data-baseweb="popover"] ul li:hover,
-    div[data-baseweb="popover"] ul li[aria-selected="true"] {
-        background-color: #ECFDF5 !important;
-        color: #047857 !important;
-    }
-    div[data-baseweb="popover"] ul li:hover *,
-    div[data-baseweb="popover"] ul li[aria-selected="true"] * {
-        color: #047857 !important;
-        -webkit-text-fill-color: #047857 !important;
-    }
-
-    /* File uploader */
-    section[data-testid="stSidebar"] .stFileUploader section {
-        background-color: rgba(255,255,255,0.08) !important;
-        border: 1px solid rgba(255,255,255,0.22) !important;
-        border-radius: 10px !important;
-    }
-    section[data-testid="stSidebar"] .stFileUploader section * {
-        color: #FFFFFF !important;
-        -webkit-text-fill-color: #FFFFFF !important;
-    }
-
-    section[data-testid="stSidebar"] button {
-        background: rgba(255,255,255,0.1) !important;
-        color: #FFF !important;
-        border: 1px solid rgba(255,255,255,0.2) !important;
-        border-radius: 10px !important;
-        font-weight: 600 !important;
-    }
-    section[data-testid="stSidebar"] button:hover {
-        background: rgba(255,255,255,0.2) !important;
-    }
-
+    /* Sidebar nav links */
     section[data-testid="stSidebar"] [data-testid="stSidebarNav"] a {
-        border-radius: 10px;
+        border-radius: 8px;
         padding: 8px 12px;
         margin: 2px 0;
+        color: #334155 !important;
         transition: background 0.15s;
     }
     section[data-testid="stSidebar"] [data-testid="stSidebarNav"] a:hover {
-        background: rgba(255,255,255,0.12) !important;
+        background: #ECFDF5 !important;
+        color: #047857 !important;
+    }
+    section[data-testid="stSidebar"] [data-testid="stSidebarNav"] a[aria-current="page"] {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
+    }
+    section[data-testid="stSidebar"] [data-testid="stSidebarNav"] a[aria-current="page"] * {
+        color: #FFFFFF !important;
     }
 
-    /* ---------- Hero ---------- */
+    /* Language selectbox — native, clean */
+    section[data-testid="stSidebar"] [data-testid="stSelectbox"] > label {
+        display: none !important;
+    }
+    section[data-testid="stSidebar"] [data-baseweb="select"] > div {
+        background-color: #F1F5F9 !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 10px !important;
+        color: #064E3B !important;
+    }
+    section[data-testid="stSidebar"] [data-baseweb="select"] > div:hover {
+        border-color: #10B981 !important;
+        background-color: #ECFDF5 !important;
+    }
+    section[data-testid="stSidebar"] [data-baseweb="select"] * {
+        color: #064E3B !important;
+    }
+
+    /* File uploader */
+    section[data-testid="stSidebar"] .stFileUploader > label {
+        display: none !important;
+    }
+    section[data-testid="stSidebar"] .stFileUploader section {
+        background-color: #F1F5F9 !important;
+        border: 1.5px dashed #CBD5E1 !important;
+        border-radius: 10px !important;
+    }
+    section[data-testid="stSidebar"] .stFileUploader section:hover {
+        border-color: #10B981 !important;
+        background-color: #ECFDF5 !important;
+    }
+
+    /* Buttons in sidebar */
+    section[data-testid="stSidebar"] .stButton > button {
+        background: #FFFFFF !important;
+        color: #B91C1C !important;
+        border: 1px solid #FECACA !important;
+        border-radius: 10px !important;
+        font-weight: 600 !important;
+    }
+    section[data-testid="stSidebar"] .stButton > button:hover {
+        background: #FEF2F2 !important;
+        border-color: #EF4444 !important;
+    }
+
+    /* ============ HERO ============ */
     .raasta-hero {
         text-align: center;
-        padding: 1.2rem 1rem 0.5rem 1rem;
+        padding: 1.5rem 1rem 0.5rem 1rem;
     }
     .raasta-hero h1 {
         font-size: 2.4rem;
@@ -139,7 +120,7 @@ def inject_custom_css():
         margin-top: 0;
     }
 
-    /* ---------- Chat bubbles ---------- */
+    /* ============ CHAT BUBBLES ============ */
     .chat-row {
         display: flex;
         margin: 14px 0;
@@ -196,6 +177,7 @@ def inject_custom_css():
         margin: 1.5rem 0 0.6rem 0;
     }
 
+    /* ============ EXPANDER ============ */
     div[data-testid="stExpander"] {
         border: 1px solid #E2E8F0 !important;
         border-radius: 14px !important;
@@ -207,6 +189,7 @@ def inject_custom_css():
         color: #047857;
     }
 
+    /* ============ BUTTONS ============ */
     .stButton > button {
         background: linear-gradient(135deg, #059669 0%, #047857 100%);
         color: white !important;
@@ -222,6 +205,7 @@ def inject_custom_css():
         color: white !important;
     }
 
+    /* ============ CHAT INPUT ============ */
     div[data-testid="stChatInput"] {
         border-radius: 14px;
         border: 1.5px solid #E2E8F0;
@@ -233,6 +217,7 @@ def inject_custom_css():
         box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
     }
 
+    /* ============ FEE ALERT & NEXT STEP ============ */
     .fee-alert {
         background-color: #FEF3C7;
         border-left: 4px solid #F59E0B;
@@ -252,6 +237,7 @@ def inject_custom_css():
         box-shadow: 0 4px 12px rgba(5,150,105,0.2);
     }
 
+    /* ============ CARDS ============ */
     .service-card {
         background: #FFFFFF;
         padding: 20px;
