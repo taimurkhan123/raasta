@@ -20,11 +20,10 @@ with st.sidebar:
     st.caption("Government navigation, simplified.")
     st.markdown("---")
     st.markdown("### ⚙️ Settings")
-    language = st.radio(
+    language = st.selectbox(
         "Preferred Language",
         options=["Auto-detect", "English", "اردو (Urdu)", "Roman Urdu"],
         index=0,
-        label_visibility="collapsed",
     )
     st.markdown("---")
     st.markdown("### 📎 Upload Document")
