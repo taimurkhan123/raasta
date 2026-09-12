@@ -1,0 +1,27 @@
+{
+  "service_id": "domicile",
+  "service_name": "Domicile Certificate",
+  "department": "Deputy Commissioner Office",
+  "description": "Official document proving residency in a specific district.",
+  "required_documents": [
+    "Copy of Applicant's CNIC/B-Form",
+    "Copy of Father's CNIC",
+    "Proof of Residence (Utility Bill or Allotment Letter)",
+    "Passport size photographs (typically 4)",
+    "Affidavit on Stamp Paper"
+  ],
+  "fee": 200,
+  "currency": "PKR",
+  "fee_verified": true,
+  "application_mode": "In-person at DC Office / E-Khidmat Markaz",
+  "official_source": "E-Khidmat Punjab / DC Office",
+  "source_date": "Jan 2024",
+  "rejection_guidance": "If rejected due to address mismatch, ensure your CNIC permanent/temporary address matches the district you are applying from. If not, update CNIC first.",
+  "steps": [
+    "Purchase Domicile file and stamp paper from courts/kutchery.",
+    "Fill the form and attach attested copies of documents.",
+    "Submit at E-Khidmat Markaz or DC Office.",
+    "Pay the official challan fee.",
+    "Collect certificate after processing time (usually 7-14 days)."
+  ]
+}
