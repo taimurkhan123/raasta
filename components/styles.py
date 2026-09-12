@@ -33,28 +33,34 @@ def inject_custom_css():
         border-color: rgba(255,255,255,0.15);
     }
 
-    /* Selectbox — dark themed */
-    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] > div {
-        background-color: rgba(255,255,255,0.10) !important;
-        border: 1px solid rgba(255,255,255,0.22) !important;
-        border-radius: 10px !important;
-        color: #FFFFFF !important;
-    }
+    /* ---------- Language dropdown (closed box + popup) ---------- */
+    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"],
     section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] * {
-        color: #FFFFFF !important;
-        background-color: transparent !important;
+        color: #064E3B !important;
+        -webkit-text-fill-color: #064E3B !important;
     }
-    /* Dropdown popup */
-    div[data-baseweb="popover"] ul li,
-    div[data-baseweb="menu"] li {
-        color: #1E293B !important;
+    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] > div {
         background-color: #FFFFFF !important;
+        border: 1px solid #A7F3D0 !important;
+        border-radius: 10px !important;
+    }
+    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] svg {
+        fill: #064E3B !important;
+        color: #064E3B !important;
+    }
+
+    div[data-baseweb="popover"] ul,
+    div[data-baseweb="popover"] ul li,
+    div[data-baseweb="menu"] ul li {
+        background-color: #FFFFFF !important;
+        color: #1E293B !important;
     }
     div[data-baseweb="popover"] ul li:hover,
-    div[data-baseweb="menu"] li:hover {
+    div[data-baseweb="menu"] ul li:hover {
         background-color: #ECFDF5 !important;
         color: #047857 !important;
     }
+
     /* File uploader */
     section[data-testid="stSidebar"] .stFileUploader section {
         background-color: rgba(255,255,255,0.08) !important;
@@ -76,7 +82,6 @@ def inject_custom_css():
         background: rgba(255,255,255,0.2) !important;
     }
 
-    /* Sidebar nav links */
     section[data-testid="stSidebar"] [data-testid="stSidebarNav"] a {
         border-radius: 10px;
         padding: 8px 12px;
@@ -155,7 +160,6 @@ def inject_custom_css():
     .chat-bubble-ai ul { margin: 6px 0 6px 18px; }
     .chat-bubble-ai li { margin: 3px 0; }
 
-    /* ---------- Suggestion chips ---------- */
     .chip-label {
         color: #64748B;
         font-size: 0.85rem;
@@ -165,7 +169,6 @@ def inject_custom_css():
         margin: 1.5rem 0 0.6rem 0;
     }
 
-    /* ---------- Voice card ---------- */
     div[data-testid="stExpander"] {
         border: 1px solid #E2E8F0 !important;
         border-radius: 14px !important;
@@ -177,7 +180,6 @@ def inject_custom_css():
         color: #047857;
     }
 
-    /* ---------- Buttons ---------- */
     .stButton > button {
         background: linear-gradient(135deg, #059669 0%, #047857 100%);
         color: white !important;
@@ -193,7 +195,6 @@ def inject_custom_css():
         color: white !important;
     }
 
-    /* ---------- Chat input ---------- */
     div[data-testid="stChatInput"] {
         border-radius: 14px;
         border: 1.5px solid #E2E8F0;
@@ -205,7 +206,6 @@ def inject_custom_css():
         box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
     }
 
-    /* ---------- Fee alert & next step ---------- */
     .fee-alert {
         background-color: #FEF3C7;
         border-left: 4px solid #F59E0B;
@@ -225,7 +225,6 @@ def inject_custom_css():
         box-shadow: 0 4px 12px rgba(5,150,105,0.2);
     }
 
-    /* Home page cards */
     .service-card {
         background: #FFFFFF;
         padding: 20px;
