@@ -12,7 +12,7 @@ Raasta uses a secure, verified pipeline to ensure you never get hallucinated gov
 
 1. **Voice / Text Input**: You speak or type your problem naturally.
 2. **Speech-to-Text**: Groq Whisper models transcribe your voice accurately.
-3. **Situation Engine**: An LLM extracts your true intent, language, and context (e.g., *Is this a new application or a rejection?*).
+3. **Situation Engine**: An LLM extracts your true intent, language, and context.
 4. **Service Matching**: Your intent is matched to our hardcoded, verified JSON knowledge base.
 5. **Rule Processing**: Required documents, exact fees, and application modes are extracted.
 6. **Personalized Guide**: The AI formats this strict data into an easy-to-read, language-matched roadmap.
