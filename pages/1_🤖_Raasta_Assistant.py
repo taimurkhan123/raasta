@@ -43,7 +43,7 @@ if audio_bytes:
             query_to_process = transcription
             st.success(f"🗣️ Heard: {transcription}")
     except Exception as e:
-        st.error("Could not process audio. Please try typing.")
+        st.error(f"Audio Error: {str(e)}")
 
 if user_input:
     query_to_process = user_input
@@ -69,4 +69,5 @@ if query_to_process:
             st.markdown(f"<div class='chat-bubble-ai'>{response}</div>", unsafe_allow_html=True)
             
         except Exception as e:
-            st.error("I'm having trouble connecting to the verified systems right now. Please try again.")
+            # THIS NOW SHOWS THE REAL ERROR
+            st.error(f"SYSTEM ERROR: {str(e)}")
