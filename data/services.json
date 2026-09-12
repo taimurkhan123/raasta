@@ -1,0 +1,8 @@
+{
+  "services": [
+    "cnic_correction",
+    "fir_filing",
+    "domicile",
+    "birth_certificate"
+  ]
+}
