@@ -22,7 +22,7 @@ with st.sidebar:
     st.markdown("---")
 
     st.markdown("### ⚙️ Settings")
-       language = st.radio(
+    language = st.radio(
         "Preferred Language",
         options=["Auto-detect", "English", "اردو (Urdu)", "Roman Urdu"],
         index=0,
@@ -58,7 +58,7 @@ if "messages" not in st.session_state:
 if "pending_query" not in st.session_state:
     st.session_state.pending_query = None
 
-# ---------------- SUGGESTIONS (only when empty) ----------------
+# ---------------- SUGGESTIONS (only when chat is empty) ----------------
 if not st.session_state.messages:
     st.markdown('<div class="chip-label">Try one of these:</div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
