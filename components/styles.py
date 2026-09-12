@@ -1,79 +1,251 @@
 import streamlit as st
 
+
 def inject_custom_css():
     st.markdown("""
     <style>
-        .hero-section {
-            text-align: center;
-            padding: 2rem 1rem;
-            background: linear-gradient(180deg, #E8F5E9 0%, #FFFFFF 100%);
-            border-radius: 15px;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-        }
-        .step-card {
-            background-color: #F1F5F9;
-            padding: 15px 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #006600;
-            border: 1px solid #E2E8F0;
-        }
-        .service-card {
-            background-color: #FFFFFF;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #E2E8F0;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
-            transition: transform 0.2s;
-        }
-        .service-card:hover {
-            border-color: #006600;
-            transform: translateY(-2px);
-        }
-        .service-card h4 {
-            margin: 0 0 10px 0;
-            color: #1E293B;
-        }
-        .service-card p {
-            margin: 0;
-            color: #64748B;
-            font-size: 0.9rem;
-        }
-        .chat-bubble-user {
-            background-color: #E8F5E9;
-            padding: 15px;
-            border-radius: 15px 15px 0px 15px;
-            margin: 10px 0;
-            border: 1px solid #C8E6C9;
-        }
-        .chat-bubble-ai {
-            background-color: #FFFFFF;
-            padding: 20px;
-            border-radius: 15px 15px 15px 0px;
-            margin: 10px 0;
-            border: 1px solid #E2E8F0;
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
-        }
-        .fee-alert {
-            background-color: #FFF3CD;
-            border-left: 5px solid #FFC107;
-            padding: 10px 15px;
-            margin: 15px 0;
-            border-radius: 4px;
-            color: #856404;
-        }
-        .next-step {
-            background-color: #006600;
-            color: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: bold;
-            margin-top: 15px;
-        }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@500;700&display=swap');
+
+    html, body, [class*="css"] {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .stApp {
+        background: linear-gradient(180deg, #F0FDF4 0%, #F8FAFC 400px, #F8FAFC 100%);
+    }
+
+    /* ---------- Sidebar ---------- */
+    section[data-testid="stSidebar"] {
+        background: linear-gradient(180deg, #064E3B 0%, #065F46 100%);
+        border-right: none;
+    }
+    section[data-testid="stSidebar"] * {
+        color: #ECFDF5 !important;
+    }
+    section[data-testid="stSidebar"] h1,
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3 {
+        color: #FFFFFF !important;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+    }
+    section[data-testid="stSidebar"] hr {
+        border-color: rgba(255,255,255,0.15);
+    }
+    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] > div,
+    section[data-testid="stSidebar"] .stFileUploader section {
+        background-color: rgba(255,255,255,0.08) !important;
+        border: 1px solid rgba(255,255,255,0.18) !important;
+        border-radius: 10px !important;
+    }
+    section[data-testid="stSidebar"] button {
+        background: rgba(255,255,255,0.1) !important;
+        color: #FFF !important;
+        border: 1px solid rgba(255,255,255,0.2) !important;
+        border-radius: 10px !important;
+        font-weight: 600 !important;
+    }
+    section[data-testid="stSidebar"] button:hover {
+        background: rgba(255,255,255,0.2) !important;
+    }
+
+    /* Sidebar nav links */
+    section[data-testid="stSidebar"] [data-testid="stSidebarNav"] a {
+        border-radius: 10px;
+        padding: 8px 12px;
+        margin: 2px 0;
+        transition: background 0.15s;
+    }
+    section[data-testid="stSidebar"] [data-testid="stSidebarNav"] a:hover {
+        background: rgba(255,255,255,0.12) !important;
+    }
+
+    /* ---------- Hero ---------- */
+    .raasta-hero {
+        text-align: center;
+        padding: 1.2rem 1rem 0.5rem 1rem;
+    }
+    .raasta-hero h1 {
+        font-size: 2.4rem;
+        font-weight: 800;
+        letter-spacing: -0.8px;
+        background: linear-gradient(90deg, #059669 0%, #047857 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.3rem;
+    }
+    .raasta-hero p {
+        color: #475569;
+        font-size: 1.05rem;
+        margin-top: 0;
+    }
+    .raasta-subtle {
+        text-align: center;
+        color: #64748B;
+        font-size: 0.92rem;
+        margin-bottom: 1.2rem;
+    }
+
+    /* ---------- Chat bubbles ---------- */
+    .chat-row {
+        display: flex;
+        margin: 14px 0;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .chat-row.user { flex-direction: row-reverse; }
+    .chat-avatar {
+        width: 36px; height: 36px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 18px;
+        flex-shrink: 0;
+    }
+    .chat-avatar.user { background: #DCFCE7; }
+    .chat-avatar.ai   { background: #064E3B; color: white; }
+
+    .chat-bubble-user, .chat-bubble-ai {
+        padding: 14px 18px;
+        border-radius: 16px;
+        max-width: 82%;
+        line-height: 1.55;
+        font-size: 0.97rem;
+    }
+    .chat-bubble-user {
+        background: linear-gradient(135deg, #DCFCE7 0%, #BBF7D0 100%);
+        color: #064E3B;
+        border: 1px solid #86EFAC;
+        border-top-right-radius: 4px;
+    }
+    .chat-bubble-ai {
+        background: #FFFFFF;
+        color: #1E293B;
+        border: 1px solid #E2E8F0;
+        border-top-left-radius: 4px;
+        box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    .chat-bubble-ai h3 {
+        margin-top: 14px;
+        margin-bottom: 6px;
+        font-size: 1.02rem;
+        color: #047857;
+    }
+    .chat-bubble-ai h3:first-child { margin-top: 0; }
+    .chat-bubble-ai ul { margin: 6px 0 6px 18px; }
+    .chat-bubble-ai li { margin: 3px 0; }
+
+    /* ---------- Suggestion chips ---------- */
+    .chip-label {
+        color: #64748B;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin: 1.5rem 0 0.6rem 0;
+    }
+
+    /* ---------- Voice card ---------- */
+    div[data-testid="stExpander"] {
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 14px !important;
+        background: #FFFFFF !important;
+        box-shadow: 0 1px 3px rgba(15,23,42,0.03);
+    }
+    div[data-testid="stExpander"] summary {
+        font-weight: 600;
+        color: #047857;
+    }
+
+    /* ---------- Buttons ---------- */
+    .stButton > button {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        color: white !important;
+        border: none !important;
+        border-radius: 12px !important;
+        font-weight: 600 !important;
+        padding: 0.55rem 1.1rem !important;
+        transition: all 0.15s ease !important;
+    }
+    .stButton > button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(5, 150, 105, 0.25) !important;
+        color: white !important;
+    }
+
+    /* ---------- Chat input ---------- */
+    div[data-testid="stChatInput"] {
+        border-radius: 14px;
+        border: 1.5px solid #E2E8F0;
+        background: #FFFFFF;
+        box-shadow: 0 4px 14px rgba(15,23,42,0.04);
+    }
+    div[data-testid="stChatInput"]:focus-within {
+        border-color: #10B981;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+
+    /* ---------- Misc ---------- */
+    .fee-alert {
+        background-color: #FEF3C7;
+        border-left: 4px solid #F59E0B;
+        padding: 10px 14px;
+        margin: 12px 0;
+        border-radius: 8px;
+        color: #78350F;
+        font-size: 0.92rem;
+    }
+    .next-step {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        color: white;
+        padding: 14px 18px;
+        border-radius: 12px;
+        font-weight: 600;
+        margin-top: 14px;
+        box-shadow: 0 4px 12px rgba(5,150,105,0.2);
+    }
+
+    /* Service cards on home page */
+    .service-card {
+        background: #FFFFFF;
+        padding: 20px;
+        border-radius: 14px;
+        border: 1px solid #E2E8F0;
+        margin-bottom: 12px;
+        box-shadow: 0 1px 3px rgba(15,23,42,0.04);
+        transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+    }
+    .service-card:hover {
+        border-color: #10B981;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(16,185,129,0.08);
+    }
+    .service-card h4 {
+        margin: 0 0 8px 0;
+        color: #064E3B;
+        font-size: 1.05rem;
+    }
+    .service-card p {
+        margin: 0;
+        color: #64748B;
+        font-size: 0.9rem;
+    }
+    .step-card {
+        background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+        padding: 16px 12px;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #047857;
+        border: 1px solid #A7F3D0;
+    }
+    .hero-section {
+        text-align: center;
+        padding: 2rem 1rem;
+        background: linear-gradient(180deg, #ECFDF5 0%, #FFFFFF 100%);
+        border-radius: 18px;
+        margin-bottom: 1.5rem;
+        border: 1px solid #D1FAE5;
+    }
     </style>
     """, unsafe_allow_html=True)
