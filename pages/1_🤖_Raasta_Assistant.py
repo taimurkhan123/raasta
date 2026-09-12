@@ -23,8 +23,11 @@ with st.sidebar:
     language = st.selectbox(
         "Preferred Language",
         options=["Auto-detect", "English", "اردو (Urdu)", "Roman Urdu"],
-        index=0,
+        index=None,
+        placeholder="Select Language 👇",
     )
+    if language is None:
+        language = "Auto-detect"
     st.markdown("---")
     st.markdown("### 📎 Upload Document")
     uploaded_file = st.file_uploader(
