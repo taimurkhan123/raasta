@@ -9,7 +9,7 @@ def get_groq_client():
 def call_llm(messages, response_format=None, temperature=0.1):
     client = get_groq_client()
     kwargs = {
-        "model": "llama-3.1-8b-instant",
+        "model": "openai/gpt-oss-20b",
         "messages": messages,
         "temperature": temperature,
     }
