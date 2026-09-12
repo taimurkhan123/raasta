@@ -33,32 +33,58 @@ def inject_custom_css():
         border-color: rgba(255,255,255,0.15);
     }
 
-    /* ---------- Language dropdown (closed box + popup) ---------- */
-    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"],
-    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] * {
+    /* =========================================================
+       LANGUAGE DROPDOWN — force everything white box + dark green
+       ========================================================= */
+    section[data-testid="stSidebar"] [data-testid="stSelectbox"],
+    section[data-testid="stSidebar"] [data-testid="stSelectbox"] *,
+    section[data-testid="stSidebar"] [data-baseweb="select"],
+    section[data-testid="stSidebar"] [data-baseweb="select"] *,
+    section[data-testid="stSidebar"] [data-baseweb="select"] input,
+    section[data-testid="stSidebar"] [data-baseweb="select"] div,
+    section[data-testid="stSidebar"] [data-baseweb="select"] span {
+        background-color: #FFFFFF !important;
         color: #064E3B !important;
         -webkit-text-fill-color: #064E3B !important;
+        opacity: 1 !important;
     }
-    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] > div {
-        background-color: #FFFFFF !important;
-        border: 1px solid #A7F3D0 !important;
+    section[data-testid="stSidebar"] [data-baseweb="select"] > div {
+        border: 1.5px solid #A7F3D0 !important;
         border-radius: 10px !important;
+        box-shadow: none !important;
     }
-    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] svg {
+    section[data-testid="stSidebar"] [data-baseweb="select"] svg {
         fill: #064E3B !important;
         color: #064E3B !important;
+        background-color: transparent !important;
+    }
+    /* Placeholder text — slightly lighter so it looks like a hint */
+    section[data-testid="stSidebar"] [data-baseweb="select"] input::placeholder {
+        color: #94A3B8 !important;
+        -webkit-text-fill-color: #94A3B8 !important;
+        opacity: 1 !important;
     }
 
+    /* Dropdown popup */
+    div[data-baseweb="popover"],
+    div[data-baseweb="popover"] *,
     div[data-baseweb="popover"] ul,
-    div[data-baseweb="popover"] ul li,
-    div[data-baseweb="menu"] ul li {
+    div[data-baseweb="popover"] ul *,
+    div[data-baseweb="menu"],
+    div[data-baseweb="menu"] * {
         background-color: #FFFFFF !important;
         color: #1E293B !important;
+        -webkit-text-fill-color: #1E293B !important;
     }
     div[data-baseweb="popover"] ul li:hover,
-    div[data-baseweb="menu"] ul li:hover {
+    div[data-baseweb="popover"] ul li[aria-selected="true"] {
         background-color: #ECFDF5 !important;
         color: #047857 !important;
+    }
+    div[data-baseweb="popover"] ul li:hover *,
+    div[data-baseweb="popover"] ul li[aria-selected="true"] * {
+        color: #047857 !important;
+        -webkit-text-fill-color: #047857 !important;
     }
 
     /* File uploader */
@@ -69,6 +95,7 @@ def inject_custom_css():
     }
     section[data-testid="stSidebar"] .stFileUploader section * {
         color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
     }
 
     section[data-testid="stSidebar"] button {
