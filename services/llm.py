@@ -7,7 +7,7 @@ def get_groq_client():
 def call_llm(messages, response_format=None, temperature=0.1):
     client = get_groq_client()
     kwargs = {
-        "model": "llama-3.1-8b-instant", # UPDATED MODEL NAME
+        "model": "llama3-8b-8192",  # Updated to valid Groq model string
         "messages": messages,
         "temperature": temperature
     }
