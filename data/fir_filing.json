@@ -1,0 +1,24 @@
+{
+  "service_id": "fir_filing",
+  "service_name": "First Information Report (FIR)",
+  "department": "Police",
+  "description": "Filing a report for a crime or lost valuable items.",
+  "required_documents": [
+    "Applicant's valid CNIC",
+    "Written application detailing the incident",
+    "Proof of ownership (if item is stolen/lost)"
+  ],
+  "fee": 0,
+  "currency": "PKR",
+  "fee_verified": true,
+  "application_mode": "In-person at Police Station Front Desk",
+  "official_source": "Police Department Guidelines",
+  "source_date": "Jan 2024",
+  "rejection_guidance": "If the front desk refuses to register the FIR, you have the legal right to submit a written petition to the SP (Superintendent of Police) Complaint Cell or file a petition in the Sessions Court under Section 22-A/22-B CrPC.",
+  "steps": [
+    "Write an application addressed to the SHO of the jurisdiction where incident occurred.",
+    "Visit the Police Station Front Desk.",
+    "Submit the application and get a Diary Number (E-Tag).",
+    "Follow up for FIR registration copy."
+  ]
+}
