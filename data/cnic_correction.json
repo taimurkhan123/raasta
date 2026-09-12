@@ -1,0 +1,26 @@
+{
+  "service_id": "cnic_correction",
+  "service_name": "CNIC Modification / Correction",
+  "department": "NADRA",
+  "description": "Correct name, date of birth, address, or marital status on CNIC.",
+  "required_documents": [
+    "Original Old CNIC",
+    "Biometric verification of a blood relative (for name/DOB change)",
+    "Matriculation Certificate or Birth Certificate (for DOB)",
+    "Nikah Nama (for marital status update)"
+  ],
+  "fee": 1000,
+  "currency": "PKR",
+  "fee_verified": true,
+  "application_mode": "Online via Pak Identity App OR In-person at NADRA Center",
+  "official_source": "NADRA Official Portal",
+  "source_date": "Jan 2024",
+  "rejection_guidance": "If rejected due to fingerprint mismatch, you must visit a physical NADRA Mega Center for manual biometrics override. Online system cannot bypass faded fingerprints.",
+  "steps": [
+    "Download Pak Identity App or visit nearest NADRA center.",
+    "Submit required proof document (e.g., Matric certificate).",
+    "Provide biometrics.",
+    "Pay the official fee.",
+    "Receive corrected CNIC in 7-10 working days."
+  ]
+}
