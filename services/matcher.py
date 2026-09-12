@@ -4,11 +4,39 @@ import streamlit as st
 from services.llm import call_llm
 
 SERVICE_KEYWORDS = {
-    "cnic_correction": ["cnic", "nadra", "id card", "shanaakhti", "identity card", "naam ghalat", "name change", "dob", "date of birth", "address change"],
-    "fir_filing": ["fir", "police", "chori", "stolen", "theft", "crime", "report", "gum", "lost", "robbery"],
-    "domicile": ["domicile", "rihaish", "residence", "dc office", "e-khidmat", "baqaida"],
-    "birth_certificate": ["birth", "paidaish", "newborn", "union council", "b-form", "bacha"],
+    "cnic_correction": [
+        # English / Roman
+        "cnic", "nadra", "id card", "identity card", "shanaakhti",
+        "naam ghalat", "name change", "dob", "date of birth",
+        "address change", "cnic correction", "cnic theek",
+        # Urdu script
+        "سینے سی", "شناختی", "شناختی کارڈ", "نادرا", "کارڈ",
+        "نام غلط", "نام تبدیل", "تاریخ پیدائش", "پتہ تبدیل",
+    ],
+    "fir_filing": [
+        # English / Roman
+        "fir", "police", "chori", "stolen", "theft", "crime",
+        "report karni", "gum", "lost", "robbery", "snatching",
+        # Urdu script
+        "ایف آئی آر", "ایف آئی", "پولیس", "چوری", "گم", "گمشدہ",
+        "ڈکیتی", "سرقہ", "رپورٹ",
+    ],
+    "domicile": [
+        # English / Roman
+        "domicile", "rihaish", "residence", "dc office",
+        "e-khidmat", "baqaida",
+        # Urdu script
+        "ڈومیسائل", "رہائش", "رہائشی", "ڈی سی",
+    ],
+    "birth_certificate": [
+        # English / Roman
+        "birth", "paidaish", "newborn", "union council",
+        "b-form", "bacha",
+        # Urdu script
+        "پیدائش", "پیدائشی", "جनم", "بچہ", "بچے", "یونین کونسل",
+    ],
 }
+
 
 def _keyword_match(query):
     q = query.lower()
@@ -18,6 +46,7 @@ def _keyword_match(query):
         if hits > score:
             best, score = service_id, hits
     return best if score > 0 else None
+
 
 def _extract_json(text):
     if not text:
@@ -40,11 +69,16 @@ def _extract_json(text):
             pass
     return None
 
+
 def analyze_situation(user_query, preferred_language="Auto-detect"):
     kw_hit = _keyword_match(user_query)
+
     llm_result = None
     try:
-        system_prompt = 'Reply with ONLY JSON: {"language_detected":"urdu|english|mixed","rejection_mentioned":true|false}'
+        system_prompt = (
+            'Reply with ONLY JSON: '
+            '{"language_detected":"urdu|english|mixed","rejection_mentioned":true|false}'
+        )
         raw = call_llm([
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_query},
