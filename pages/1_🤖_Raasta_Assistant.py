@@ -143,7 +143,7 @@ if query_to_process:
             else:
                 service_data = None
 
-            response = generate_response(augmented_query, situation, service_data)
+            response = generate_response(augmented_query, situation, service_data,preferred_language=language))
             st.session_state.messages.append({"role": "assistant", "content": response})
             st.markdown(f"""
             <div class="chat-row">
