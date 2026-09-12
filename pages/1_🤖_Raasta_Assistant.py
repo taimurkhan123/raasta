@@ -22,10 +22,11 @@ with st.sidebar:
     st.markdown("---")
 
     st.markdown("### ⚙️ Settings")
-    language = st.selectbox(
+       language = st.radio(
         "Preferred Language",
         options=["Auto-detect", "English", "اردو (Urdu)", "Roman Urdu"],
         index=0,
+        label_visibility="collapsed",
     )
 
     st.markdown("---")
