@@ -5,6 +5,7 @@ from services.speech import transcribe_audio
 from services.matcher import analyze_situation
 from services.retrieval import get_service_data
 from services.response import generate_response
+from services.document import extract_text_from_upload, retrieve_relevant_chunks
 
 st.set_page_config(
     page_title="Raasta Assistant",
@@ -21,7 +22,7 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### ⚙️ Settings")
     language = st.selectbox(
-        "Preferred Language",
+        "Language",
         options=["Auto-detect", "English", "اردو (Urdu)", "Roman Urdu"],
         index=None,
         placeholder="Select Language 👇",
@@ -35,8 +36,17 @@ with st.sidebar:
         type=["pdf", "png", "jpg", "jpeg"],
         label_visibility="collapsed",
     )
+    doc_text = ""
     if uploaded_file is not None:
-        st.success(f"✅ {uploaded_file.name}")
+        with st.spinner("Reading document..."):
+            doc_text, note = extract_text_from_upload(uploaded_file)
+        if doc_text:
+            st.success(f"✅ {uploaded_file.name}")
+            st.caption(note)
+            with st.expander("📄 Preview extracted text"):
+                st.text(doc_text[:800] + ("..." if len(doc_text) > 800 else ""))
+        else:
+            st.warning(f"⚠️ {note}")
     st.markdown("---")
     if st.button("🗑️ Clear Chat", use_container_width=True):
         st.session_state.messages = []
@@ -124,9 +134,23 @@ if query_to_process:
 
     with st.spinner("Understanding your situation..."):
         try:
+            doc_context = ""
+            if doc_text:
+                doc_context = retrieve_relevant_chunks(doc_text, query_to_process, top_k=3)
+
             augmented_query = query_to_process
-            if uploaded_file is not None:
-                augmented_query = f"[User attached: {uploaded_file.name}] " + query_to_process
+            if doc_context:
+                augmented_query = (
+                    "The user uploaded a document. Below are the most relevant excerpts. "
+                    "Use ONLY these to answer document questions.\n\n"
+                    f"--- DOCUMENT EXCERPTS ---\n{doc_context}\n--- END EXCERPTS ---\n\n"
+                    f"User question: {query_to_process}"
+                )
+            elif uploaded_file is not None:
+                augmented_query = (
+                    f"[User uploaded: {uploaded_file.name} but no text could be extracted.] "
+                    f"{query_to_process}"
+                )
 
             situation = analyze_situation(augmented_query, preferred_language=language)
 
