@@ -15,12 +15,10 @@ st.set_page_config(
 inject_custom_css()
 check_api_key()
 
-# ---------------- SIDEBAR ----------------
 with st.sidebar:
     st.markdown("## 🛣️ Raasta")
     st.caption("Government navigation, simplified.")
     st.markdown("---")
-
     st.markdown("### ⚙️ Settings")
     language = st.radio(
         "Preferred Language",
@@ -28,7 +26,6 @@ with st.sidebar:
         index=0,
         label_visibility="collapsed",
     )
-
     st.markdown("---")
     st.markdown("### 📎 Upload Document")
     uploaded_file = st.file_uploader(
@@ -38,14 +35,12 @@ with st.sidebar:
     )
     if uploaded_file is not None:
         st.success(f"✅ {uploaded_file.name}")
-
     st.markdown("---")
     if st.button("🗑️ Clear Chat", use_container_width=True):
         st.session_state.messages = []
         st.session_state.pending_query = None
         st.rerun()
 
-# ---------------- HERO ----------------
 st.markdown("""
 <div class="raasta-hero">
     <h1>🤖 Raasta Assistant</h1>
@@ -58,7 +53,6 @@ if "messages" not in st.session_state:
 if "pending_query" not in st.session_state:
     st.session_state.pending_query = None
 
-# ---------------- SUGGESTIONS (only when chat is empty) ----------------
 if not st.session_state.messages:
     st.markdown('<div class="chip-label">Try one of these:</div>', unsafe_allow_html=True)
     c1, c2 = st.columns(2)
@@ -77,7 +71,6 @@ if not st.session_state.messages:
             st.session_state.pending_query = "Naye bache ka birth certificate kaise banwayein?"
             st.rerun()
 
-# ---------------- CHAT HISTORY ----------------
 for msg in st.session_state.messages:
     if msg["role"] == "user":
         st.markdown(f"""
@@ -94,7 +87,6 @@ for msg in st.session_state.messages:
         </div>
         """, unsafe_allow_html=True)
 
-# ---------------- VOICE INPUT ----------------
 with st.expander("🎙️ Voice Input — click to record", expanded=False):
     audio_value = st.audio_input("Record your problem")
     if audio_value is not None:
@@ -106,8 +98,7 @@ with st.expander("🎙️ Voice Input — click to record", expanded=False):
             else:
                 st.error("Nothing transcribed — please try again.")
 
-# ---------------- TEXT INPUT ----------------
-user_input = st.chat_input("Type your problem here... (e.g., 'Meri CNIC mein naam ghalat hai')")
+user_input = st.chat_input("Type your problem here...")
 
 query_to_process = None
 if st.session_state.pending_query:
@@ -116,7 +107,6 @@ if st.session_state.pending_query:
 elif user_input:
     query_to_process = user_input
 
-# ---------------- PROCESS ----------------
 if query_to_process:
     display_query = query_to_process
     if uploaded_file is not None:
@@ -143,7 +133,7 @@ if query_to_process:
             else:
                 service_data = None
 
-            response = generate_response(augmented_query, situation, service_data,preferred_language=language))
+            response = generate_response(augmented_query, situation, service_data, preferred_language=language)
             st.session_state.messages.append({"role": "assistant", "content": response})
             st.markdown(f"""
             <div class="chat-row">
