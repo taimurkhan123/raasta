@@ -1,6 +1,8 @@
 import streamlit as st
+from components.styles import inject_custom_css
 
 st.set_page_config(page_title="About | Raasta")
+inject_custom_css()
 
 st.title("ℹ️ About Raasta")
 st.markdown("""
