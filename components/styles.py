@@ -4,7 +4,7 @@ import streamlit as st
 def inject_custom_css():
     st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Nastaliq+Urdu:wght@500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
     html, body, [class*="css"] {
         font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -32,12 +32,39 @@ def inject_custom_css():
     section[data-testid="stSidebar"] hr {
         border-color: rgba(255,255,255,0.15);
     }
-    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] > div,
+
+    /* Selectbox — dark themed */
+    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] > div {
+        background-color: rgba(255,255,255,0.10) !important;
+        border: 1px solid rgba(255,255,255,0.22) !important;
+        border-radius: 10px !important;
+        color: #FFFFFF !important;
+    }
+    section[data-testid="stSidebar"] .stSelectbox div[data-baseweb="select"] * {
+        color: #FFFFFF !important;
+        background-color: transparent !important;
+    }
+    /* Dropdown popup */
+    div[data-baseweb="popover"] ul li,
+    div[data-baseweb="menu"] li {
+        color: #1E293B !important;
+        background-color: #FFFFFF !important;
+    }
+    div[data-baseweb="popover"] ul li:hover,
+    div[data-baseweb="menu"] li:hover {
+        background-color: #ECFDF5 !important;
+        color: #047857 !important;
+    }
+    /* File uploader */
     section[data-testid="stSidebar"] .stFileUploader section {
         background-color: rgba(255,255,255,0.08) !important;
-        border: 1px solid rgba(255,255,255,0.18) !important;
+        border: 1px solid rgba(255,255,255,0.22) !important;
         border-radius: 10px !important;
     }
+    section[data-testid="stSidebar"] .stFileUploader section * {
+        color: #FFFFFF !important;
+    }
+
     section[data-testid="stSidebar"] button {
         background: rgba(255,255,255,0.1) !important;
         color: #FFF !important;
@@ -78,12 +105,6 @@ def inject_custom_css():
         color: #475569;
         font-size: 1.05rem;
         margin-top: 0;
-    }
-    .raasta-subtle {
-        text-align: center;
-        color: #64748B;
-        font-size: 0.92rem;
-        margin-bottom: 1.2rem;
     }
 
     /* ---------- Chat bubbles ---------- */
@@ -184,7 +205,7 @@ def inject_custom_css():
         box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
     }
 
-    /* ---------- Misc ---------- */
+    /* ---------- Fee alert & next step ---------- */
     .fee-alert {
         background-color: #FEF3C7;
         border-left: 4px solid #F59E0B;
@@ -204,7 +225,7 @@ def inject_custom_css():
         box-shadow: 0 4px 12px rgba(5,150,105,0.2);
     }
 
-    /* Service cards on home page */
+    /* Home page cards */
     .service-card {
         background: #FFFFFF;
         padding: 20px;
