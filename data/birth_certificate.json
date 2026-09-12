@@ -1,0 +1,26 @@
+{
+  "service_id": "birth_certificate",
+  "service_name": "Birth Registration Certificate",
+  "department": "Union Council / Cantonment Board",
+  "description": "Official record of a child's birth.",
+  "required_documents": [
+    "Hospital Birth Slip or Midwife affidavit",
+    "Copy of Parents' CNICs",
+    "Copy of Grandfather's CNIC (sometimes required)",
+    "Filled Application Form"
+  ],
+  "fee": 300,
+  "currency": "PKR",
+  "fee_verified": true,
+  "application_mode": "In-person at local Union Council",
+  "official_source": "Local Government Guidelines",
+  "source_date": "Jan 2024",
+  "rejection_guidance": "If rejected because the birth is late (over 60 days), you must apply for a 'Late Birth Certificate'. This requires a signed affidavit on stamp paper and approval from the Assistant Director Local Government or Magistrate.",
+  "steps": [
+    "Obtain birth slip from the hospital.",
+    "Visit the Union Council of your residential area.",
+    "Fill out the registration form and attach parents' CNIC copies.",
+    "Submit fee and form.",
+    "Collect printed, stamped certificate."
+  ]
+}
