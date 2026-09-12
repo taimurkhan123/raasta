@@ -34,10 +34,10 @@ def inject_custom_css():
     }
 
     /* =========================================================
-       LANGUAGE DROPDOWN — subtle dark box, blends with sidebar
+       LANGUAGE DROPDOWN — NUCLEAR OPTION
        ========================================================= */
-    section[data-testid="stSidebar"] [data-testid="stSelectbox"] > label,
-    section[data-testid="stSidebar"] [data-testid="stSelectbox"] label {
+    /* Hide the default label */
+    section[data-testid="stSidebar"] [data-testid="stSelectbox"] > label {
         color: rgba(255, 255, 255, 0.7) !important;
         font-size: 0.78rem !important;
         font-weight: 600 !important;
@@ -45,44 +45,62 @@ def inject_custom_css():
         text-transform: uppercase !important;
     }
 
-    /* The closed selectbox box */
-    section[data-testid="stSidebar"] [data-baseweb="select"] > div,
-    section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] > div {
-        background-color: rgba(255, 255, 255, 0.09) !important;
-        border: 1px solid rgba(255, 255, 255, 0.18) !important;
-        border-radius: 10px !important;
-        color: #FFFFFF !important;
-    }
-    section[data-testid="stSidebar"] [data-baseweb="select"] > div:hover,
-    section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] > div:hover {
-        background-color: rgba(255, 255, 255, 0.15) !important;
-        border-color: rgba(255, 255, 255, 0.35) !important;
+    /* The WHOLE selectbox container */
+    section[data-testid="stSidebar"] [data-testid="stSelectbox"],
+    section[data-testid="stSidebar"] [data-testid="stSelectbox"] > div,
+    section[data-testid="stSidebar"] [data-testid="stSelectbox"] > div > div {
+        background-color: transparent !important;
     }
 
-    /* EVERYTHING inside the selectbox: white text, no white bg */
-    section[data-testid="stSidebar"] [data-testid="stSelectbox"] [data-baseweb="select"] *,
+    /* The BaseWeb select — background dark, text white */
+    section[data-testid="stSidebar"] [data-baseweb="select"] {
+        background-color: rgba(255, 255, 255, 0.09) !important;
+        border: 1px solid rgba(255, 255, 255, 0.22) !important;
+        border-radius: 10px !important;
+    }
+    section[data-testid="stSidebar"] [data-baseweb="select"]:hover {
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+    }
+
+    /* EVERY descendant of the select — kill any white bg, force white text */
     section[data-testid="stSidebar"] [data-baseweb="select"] *,
+    section[data-testid="stSidebar"] [data-baseweb="select"] input,
     section[data-testid="stSidebar"] [data-baseweb="select"] div,
     section[data-testid="stSidebar"] [data-baseweb="select"] span,
-    section[data-testid="stSidebar"] [data-baseweb="select"] input {
+    section[data-testid="stSidebar"] [data-baseweb="select"] p {
         background-color: transparent !important;
         color: #FFFFFF !important;
         -webkit-text-fill-color: #FFFFFF !important;
         opacity: 1 !important;
     }
+
+    /* The value text specifically — force visible */
+    section[data-testid="stSidebar"] [data-baseweb="select"] div[class*="ValueContainer"],
+    section[data-testid="stSidebar"] [data-baseweb="select"] div[class*="valueContainer"],
+    section[data-testid="stSidebar"] [data-baseweb="select"] div[class*="singleValue"],
+    section[data-testid="stSidebar"] [data-baseweb="select"] div[class*="single-value"] {
+        color: #FFFFFF !important;
+        -webkit-text-fill-color: #FFFFFF !important;
+        background-color: transparent !important;
+    }
+
+    /* The arrow icon */
     section[data-testid="stSidebar"] [data-baseweb="select"] svg,
     section[data-testid="stSidebar"] [data-baseweb="select"] svg * {
         fill: #FFFFFF !important;
         color: #FFFFFF !important;
         background-color: transparent !important;
     }
+
+    /* Placeholder text */
     section[data-testid="stSidebar"] [data-baseweb="select"] input::placeholder {
-        color: rgba(255, 255, 255, 0.75) !important;
-        -webkit-text-fill-color: rgba(255, 255, 255, 0.75) !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        -webkit-text-fill-color: rgba(255, 255, 255, 0.8) !important;
         opacity: 1 !important;
     }
 
-    /* Popup dropdown list — white bg, dark text (readable) */
+    /* Popup list — white bg, dark text */
     div[data-baseweb="popover"],
     div[data-baseweb="popover"] *,
     div[data-baseweb="popover"] ul,
